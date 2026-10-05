@@ -1,4 +1,4 @@
-package com.tasks.api.auth;
+package com.tasks.api.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,5 +1,9 @@
 package com.tasks.api.auth;
 
+import com.tasks.api.auth.dto.LoginRequest;
+import com.tasks.api.auth.dto.LoginResponse;
+import com.tasks.api.auth.dto.RegisterRequest;
+import com.tasks.api.auth.dto.RegisterResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,5 +23,10 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
     }
 }
