@@ -36,7 +36,9 @@ public class AuthService {
         user.setHouseId(null);
 
         User saved = userRepository.save(user);
-        return new RegisterResponse(saved.getId(), saved.getName(), saved.getEmail());
+
+        String token = jwtService.generateToken(saved);
+        return new RegisterResponse(saved.getId(), saved.getName(), saved.getEmail(), token);
     }
 
     private final AuthenticationManager authenticationManager;
